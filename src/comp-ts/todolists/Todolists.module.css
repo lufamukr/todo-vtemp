@@ -1,0 +1,12 @@
+
+.border {
+  padding: 15px;
+  border: 2px solid #cacaca;
+  background-color: #ffa500;
+}
+
+.todolist {
+  border: 2px solid #cacaca;
+  padding: 15px;
+  max-width: 30%;
+}
