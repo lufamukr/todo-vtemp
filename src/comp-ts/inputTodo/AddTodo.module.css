@@ -1,0 +1,26 @@
+
+.todolistWrapper {
+  width: fit-content;
+  padding: 15px;
+
+  border-radius: 5px;
+  background-color: #ffa500;
+
+  position: relative;
+}
+
+.delItemBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  padding: 3px;
+  border-radius: 3px;
+  border: none;
+}
+
+.todolistWrapper ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
