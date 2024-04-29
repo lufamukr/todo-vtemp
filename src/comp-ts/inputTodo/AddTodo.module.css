@@ -1,8 +1,8 @@
 
 .todolistWrapper {
-  display: flex;
   width: fit-content;
   padding: 10px 15px;
+  margin-bottom: 10px;
 
   list-style: none;
   background-color: #ffa500;
@@ -11,9 +11,13 @@
   position: relative;
 }
 
+.todolistWrapper:last-child {
+  margin-bottom: 0;
+}
+
 .todolistTitle {
   font-weight: 700;
-  color: #00cf1f;
+  color: #be00cf;
 }
 
 .todolistTitle {
