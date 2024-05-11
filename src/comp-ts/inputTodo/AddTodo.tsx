@@ -8,6 +8,10 @@ type AddTodoType = {
   list: Array<TodolistStateType>;
   err: string;
   delItem: (id: string) => void;
+  idTodo: string;
+  addTask: (title: string) => void;
+  giveSetTaskTitle: (title: string) => void;
+  taskTitle?: string;
 };
 
 export const AddTodo = (props: AddTodoType) => {
@@ -16,10 +20,16 @@ export const AddTodo = (props: AddTodoType) => {
       <ul>
         {props.list.map((m) => {
           return (
-            <ul className={s.todolistWrapper}>
+            <ul className={s.todolistWrapper} key={m.id}>
               <li>
                 <span className={s.todolistTitle}>{m.title}</span>
-                <AddTask />
+                <AddTask
+                  idTodo={props.idTodo}
+                  state={props.list}
+                  addTask={props.addTask}
+                  giveSetTaskTitle={props.giveSetTaskTitle}
+                  taskTitle={props.taskTitle}
+                />
                 <button
                   className={s.delItemBtn}
                   onClick={() => {
