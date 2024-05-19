@@ -1,103 +1,47 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
+import { state } from "./state";
 import "./App.css";
-import { AddTodo } from "./comp-ts/inputTodo/AddTodo";
-import { v4 as uuidv4 } from "uuid";
+import { AddTodo } from "./c-nts/addTodo/AddTodo";
 
-export type TaskStateType = {
-  titleTask: string;
-  id: string;
-};
+function App() {
 
-export type TodolistStateType = {
-  title: string;
-  id: string;
-  tasks?: Array<TaskStateType>;
-};
+  let [todolistState, setTodolistState] = useState(state.todolists)
+  let [todolistTitle, setTodolistTitle] = useState('')
 
-const App = () => {
-  let [taskState, setTaskState] = useState<Array<TaskStateType>>([]);
-  let [taskTitle, setTaskTitle] = useState("");
-
-  function addTask(title: string) {
-    if (taskTitle.trim() !== "") {
-      let newTask = { titleTask: title, id: uuidv4() };
-      setTaskState([...taskState, newTask]);
-      setTaskTitle("");
-    } else {
+  const addTodolist = (title:string) => {
+    console.log(todolistState)
+    let newTodolist = {
+      nameTodo: todolistTitle,
+      idTodo: "1",
+      tasks: [{ titleTask: "1", idTask: "1" }],
     }
+    setTodolistState([...todolistState, newTodolist])
+    setTodolistTitle('')
   }
 
-  function giveSetTaskTitle(title: string) {
-    setTaskTitle(title);
+  const getTodoName = (title:string) => {
+    setTodolistTitle(title)
   }
 
-  let todoState: Array<TodolistStateType> = [];
-  let [todolistState, setTodolistState] = useState(todoState);
-  let [todolistTitle, setTodolistTitle] = useState("");
-
-  let err = "";
-
-  function onClickHandler(title: string) {
-    if (title.trim() !== "") {
-      let newTodo = { id: uuidv4(), title: title };
-      let newTodoState = [...todolistState, newTodo];
-      setTodolistState(newTodoState);
-      setTodolistTitle("");
-    } else {
-      alert("enter a name");
-    }
-  }
-
-  function addTodoTitle(titleName: string) {
-    setTodolistTitle(titleName);
-  }
-
-  function deleteItem(id: string) {
-    let newTodolistState = todolistState.filter((f) => {
-      return f.id !== id;
-    });
-    setTodolistState(newTodolistState);
-  }
 
   return (
-    <div className="appWrapper">
-      <div className="addTodoBox">
-        <input
-          type="text"
-          value={todolistTitle}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            addTodoTitle(e.currentTarget.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            onClickHandler(todolistTitle);
-          }}
-        >
-          add todolist
-        </button>
-      </div>
+    <div>
+      <h1
+        style={{
+          fontSize: "40px",
+          color: "teal",
+          textAlign: "center",
+          textTransform: "capitalize",
+        }}
+      >
+        learn react by making todolist
+      </h1>
 
-      {todolistState.length > 0 ? (
-        todolistState.map((m) => {
-          return (
-            <AddTodo
-              list={todolistState}
-              title={todolistTitle}
-              err={err}
-              delItem={deleteItem}
-              idTodo={m.id}
-              addTask={addTask}
-              giveSetTaskTitle={giveSetTaskTitle}
-              taskTitle={taskTitle}
-            />
-          );
-        })
-      ) : (
-        <span>you don't have any list</span>
-      )}
+      <main className="main">
+        <AddTodo state={todolistState} addTodolist={addTodolist} titleTodo={todolistTitle} getTodoName={getTodoName}/>
+      </main>
     </div>
   );
-};
+}
 
 export default App;

@@ -1,33 +1,6 @@
 
-.appWrapper {
-  font-size: 20px;
-  line-height: 1.2;
-  background-color: #cacaca;
-}
-
-.addTodoBox {
-  padding: 25px;
-  display: flex;
-  margin-bottom: 15px;
-}
-
-.addTodoBox input{
-  margin-right: 8px;
-  max-width: 200px;
-  width: 100%;
-
-  border: 1px solid;
-  border-radius: 10px;
-}
-
-.addTodoBox button{
-  padding: 4px 6px;
-  border: 1px solid;
-  border-radius: 10px;
-  font-weight: 700;
-  text-transform: capitalize;
-  color: #be00cf;
-  background-color: #ffa500;
+.main {
+  background-color: teal;
 }
 
 
